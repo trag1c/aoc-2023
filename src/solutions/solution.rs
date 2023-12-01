@@ -1,4 +1,4 @@
 pub struct Solution {
-    pub part1: fn(String),
-    pub part2: fn(String),
+    pub part1: fn(&str),
+    pub part2: fn(&str),
 }
