@@ -3,6 +3,7 @@ mod solutions;
 
 use argv::{parse_args, quit_if, Part};
 use solutions::*;
+use std::time::Instant;
 
 const SOLUTIONS: [Solution; 0] = [];
 
@@ -29,6 +30,13 @@ fn load_data(day: u8) -> String {
 
 fn main() {
     let (day, part) = parse_args();
+
+    let now = Instant::now();
     let data = load_data(day);
+    println!("Loaded data in {}µs", now.elapsed().as_micros());
+
+    let now = Instant::now();
+    print!("Solution: ");
     get_solution(day, &part)(&data);
+    println!("Found in {}µs", now.elapsed().as_micros());
 }
