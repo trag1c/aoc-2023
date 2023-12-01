@@ -23,7 +23,10 @@ pub fn parse_args() -> (u8, Part) {
     let day = get_arg(1);
     quit_if(day.is_none(), "Day is not an integer");
     let day = day.unwrap();
-    quit_if(!(1..=25).contains(&day), format!("Invalid day ({day})").as_str());
+    quit_if(
+        !(1..=25).contains(&day),
+        format!("Invalid day ({day})").as_str(),
+    );
 
     let part = get_arg(2);
     quit_if(part.is_none(), "Part is not an integer");
