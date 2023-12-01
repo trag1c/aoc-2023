@@ -4,7 +4,7 @@ pub enum Part {
     Two,
 }
 
-pub fn quit_if(cond: bool, msg: String) {
+pub fn quit_if(cond: bool, msg: &str) {
     if cond {
         println!("{msg}");
         std::process::exit(1);
@@ -21,15 +21,15 @@ fn get_arg(n: usize) -> Option<u8> {
 
 pub fn parse_args() -> (u8, Part) {
     let day = get_arg(1);
-    quit_if(day.is_none(), "Day is not an integer".into());
+    quit_if(day.is_none(), "Day is not an integer");
     let day = day.unwrap();
-    quit_if(!(1..=25).contains(&day), format!("Invalid day ({day})"));
+    quit_if(!(1..=25).contains(&day), format!("Invalid day ({day})").as_str());
 
     let part = get_arg(2);
-    quit_if(part.is_none(), "Part is not an integer".into());
+    quit_if(part.is_none(), "Part is not an integer");
     quit_if(
         !(1..=2).contains(&part.unwrap()),
-        format!("Invalid part ({})", part.unwrap()),
+        format!("Invalid part ({})", part.unwrap()).as_str(),
     );
 
     let part = match part.unwrap() {
