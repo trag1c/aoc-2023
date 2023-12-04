@@ -5,7 +5,7 @@ use argv::{parse_args, quit_if, Part};
 use solutions::*;
 use std::time::Instant;
 
-const SOLUTIONS: [Solution; 2] = [DAY1, DAY2];
+const SOLUTIONS: [Solution; 3] = [DAY1, DAY2, DAY3];
 
 fn get_solution(day: u8, part: &Part) -> fn(&str) {
     use Part::*;
