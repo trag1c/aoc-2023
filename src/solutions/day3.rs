@@ -83,7 +83,8 @@ fn part2(input: &str) {
                     sum += line[span.0..span.1].parse::<i32>().unwrap() * stored_gear;
                     potential_gears.remove(gear_index);
                 } else {
-                    potential_gears.insert(*gear_index, line[span.0..span.1].parse::<i32>().unwrap());
+                    potential_gears
+                        .insert(*gear_index, line[span.0..span.1].parse::<i32>().unwrap());
                 }
             }
         }
