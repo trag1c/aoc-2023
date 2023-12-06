@@ -85,24 +85,33 @@ fn part1(input: &str) {
         }
         location = location.min(seed);
     }
-    
+
     println!("{location}");
 }
 
 fn part2(input: &str) {
     let (seeds, mappings) = parse(input);
-    let seed_ranges = seeds.chunks(2).map(|c| Range { start: c[0], end: c[0] + c[1] }).collect::<Vec<Range<i64>>>();
+    let seed_ranges = seeds
+        .chunks(2)
+        .map(|c| Range {
+            start: c[0],
+            end: c[0] + c[1],
+        })
+        .collect::<Vec<Range<i64>>>();
 
-    let out = seed_ranges.par_iter().map(|range: &Range<i64>| -> i64 {
-        let mut loc = i64::MAX;
-        for mut seed in range.clone() {
-            for rm in &mappings {
-                seed = rm.get(seed);
+    let out = seed_ranges
+        .par_iter()
+        .map(|range: &Range<i64>| -> i64 {
+            let mut loc = i64::MAX;
+            for mut seed in range.clone() {
+                for rm in &mappings {
+                    seed = rm.get(seed);
+                }
+                loc = loc.min(seed);
             }
-            loc = loc.min(seed);
-        }
-        loc
-    }).reduce(|| i64::MAX, i64::min);
+            loc
+        })
+        .reduce(|| i64::MAX, i64::min);
 
     println!("{out}");
 }
