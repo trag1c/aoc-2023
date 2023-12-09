@@ -1,7 +1,5 @@
-use itertools::Itertools;
-
 use super::Solution;
-
+use itertools::Itertools;
 use std::{cmp::Ordering, collections::HashMap};
 
 #[derive(Debug, Eq, PartialEq, Ord, PartialOrd, Clone)]
