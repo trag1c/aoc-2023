@@ -26,11 +26,22 @@ fn part1(input: &str) {
 
 fn part2(input: &str) {
     fn get_num(line: &str) -> i64 {
-        line.split_once(':').unwrap().1.replace(' ', "").parse::<i64>().unwrap()
+        line.split_once(':')
+            .unwrap()
+            .1
+            .replace(' ', "")
+            .parse::<i64>()
+            .unwrap()
     }
     let (time_str, distance_str) = input.split_once('\n').unwrap();
     let (time, distance) = (get_num(time_str), get_num(distance_str));
-    println!("{}", (1..time).map(move |x| (time - x) * x > distance).map(u32::from).sum::<u32>());
+    println!(
+        "{}",
+        (1..time)
+            .map(move |x| (time - x) * x > distance)
+            .map(u32::from)
+            .sum::<u32>()
+    );
 }
 
 pub const DAY6: Solution = Solution { part1, part2 };
