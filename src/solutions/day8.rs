@@ -31,7 +31,7 @@ fn gcd(mut a: u64, mut b: u64) -> u64 {
 fn lcm(a: u64, b: u64) -> u64 {
     match a.max(b) {
         0 => 0,
-        _ => (a * b) / gcd(a, b)
+        _ => (a * b) / gcd(a, b),
     }
 }
 
